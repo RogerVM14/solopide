@@ -1,0 +1,6 @@
+module Pods_SoloPide {
+  umbrella header "Pods-SoloPide-umbrella.h"
+
+  export *
+  module * { export * }
+}

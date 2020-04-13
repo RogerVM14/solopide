@@ -1,0 +1,6 @@
+module Pods_SoloPide_SoloPideTests {
+  umbrella header "Pods-SoloPide-SoloPideTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
