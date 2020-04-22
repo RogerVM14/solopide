@@ -1,103 +1,60 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, ImageBackground, TouchableOpacity, TextInput } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, StyleSheet, ImageBackground, TouchableOpacity, TextInput, Platform } from 'react-native';
+import { Container, Header, Content, Button, Icon } from 'native-base';
+
 import * as firebase from 'firebase';
+
+import Global from '../../Global';
+import axios from 'axios';
+
 
 export default function RegisterScreen({ navigation }) {
 
-    const [email, setEmail] = useState();
-    const [password, setPassword] = useState();
-    const [errorMessage, setErrorMessage] = useState(null);
-
-    handleCreateAccount = () => {
-        const user = email;
-        const pass = password;
-        firebase.auth().createUserWithEmailAndPassword(user, pass).catch(error => setErrorMessage(error.message));
-
-    }
-
     return (
+
+
+
         < View style={styles.container}>
             < View style={styles.createAccount}>
                 <Text style={styles.account}> Crear Cuenta </Text>
             </View>
 
-
-            < View style={styles.errorMessage}>
-                {/* {errorMessage && <Text style={styles.errorMessage}>{errorMessage}</Text>} */}
-                < Text> Error </Text>
-            </View>
-
-
-            < View style={styles.form}>
-                < View style={styles.account}>
-                    <Text style={styles.title}> Personal </Text>
+            < View style={styles.options}>
+                <View>
+                    <TouchableOpacity style={styles.option}
+                        onPress={() => navigation.navigate('RegisterClient')}
+                    >
+                        < ImageBackground
+                            source={require('../assets/img/cliente.png')}
+                            style={styles.image}
+                        />
+                        < Text style={styles.textoption}> Cliente </Text>
+                    </TouchableOpacity>
                 </View>
 
-                < View style={{ marginTop: 32 }}>
-                    < Text style={styles.inputTitle}> Correo </Text>
-                    < TextInput style={styles.input}
-                        autoCapitalize="none"
-                        onChangeText={email => setEmail(email)}
-                        value={email}
-                    ></TextInput>
+                <View>
+                    <TouchableOpacity style={styles.option}
+                        onPress={() => navigation.navigate('RegisterCommerce')}
+                    >
+                        < ImageBackground
+                            source={require('../assets/img/comercio.png')}
+                            style={styles.image}
+                        />
+                        < Text style={styles.textoption}> Comercio</Text>
+                    </TouchableOpacity>
                 </View>
-
-                < View style={{ marginTop: 32 }}>
-                    < Text style={styles.inputTitle}> Contraseña </Text>
-                    < TextInput style={styles.input}
-                        autoCapitalize="none"
-                        secureTextEntry
-                        onChangeText={password => setPassword(password)}
-                        value={password}
-                    ></TextInput>
-                </View>
-
-                < View style={styles.account}>
-                    <Text style={styles.title}> Comercio </Text>
-                </View>
-                < View style={{ marginTop: 32 }}>
-                    < Text style={styles.inputTitle}> Nombre </Text>
-                    < TextInput style={styles.input}
-                        autoCapitalize="none"
-                    //onChangeText={password => setPassword(password)}
-                    //value={password}
-                    ></TextInput>
-                </View>
-                < View style={{ marginTop: 32 }}>
-                    < Text style={styles.inputTitle}> Telefono </Text>
-                    < TextInput style={styles.input}
-                        autoCapitalize="none"
-                    //onChangeText={password => setPassword(password)}
-                    //value={password}
-                    ></TextInput>
-                </View>
-
-                < View style={{ marginTop: 32 }}>
-                    < Text style={styles.inputTitle}> Categoria </Text>
-                    < TextInput style={styles.input}
-                        autoCapitalize="none"
-                    //onChangeText={password => setPassword(password)}
-                    //value={password}
-                    ></TextInput>
-                </View>
-
-
-                < TouchableOpacity
-                    style={styles.button}
-                    // onPress={handleCreateAccount}
-                >
-                    <Text style={{ color: "#fff", fontWeight: "500" }}> Crear Cuenta </Text>
-                </TouchableOpacity>
             </View>
 
         </View>
+
     );
 }
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#ffffff"
+        backgroundColor: "#ffffff",
+        justifyContent: "center"
     },
     form: {
         marginBottom: 48,
@@ -113,7 +70,7 @@ const styles = StyleSheet.create({
         borderBottomColor: "#8A8F9E",
         borderBottomWidth: StyleSheet.hairlineWidth,
         height: 40,
-        width: 300,
+        width: 250,
         fontSize: 15,
         color: "#161F3D"
     },
@@ -136,10 +93,50 @@ const styles = StyleSheet.create({
         fontWeight: "600"
     },
     title: {
-        marginBottom: 25,
         fontSize: 18,
         fontWeight: "400",
-        marginTop: 10
+        marginTop: 10,
+        alignSelf: "center"
+    },
+    error: {
+        color: "#E9446A",
+        fontSize: 13,
+        fontWeight: "600",
+        textAlign: "center",
+        marginTop: 13
+
+    },
+    options: {
+
+        justifyContent: "space-between",
+        alignItems: "center"
+    },
+    option: {
+        backgroundColor: "#fff",
+        height: 100,
+        width: 130,
+        marginTop: 20,
+        borderRadius: 50,
+        justifyContent: "center",
+        alignItems: "center",
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 5,
+    },
+    textoption: {
+        color: "black",
+        fontSize: 15,
+        fontWeight: "bold"
+    },
+    image: {
+        height: 45,
+        width: 45,
+        resizeMode: "cover"
     }
 
 });

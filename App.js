@@ -4,9 +4,12 @@ import HomeScreen from './src/screens/HomeScreen';
 import LoadingScreen from './src/screens/LoadingScreen';
 import RegisterScreen from './src/screens/RegisterScreen';
 import LoginScreen from './src/screens/LoginScreen';
+import RegisterCommerceScreen from './src/screens/RegisterCommerce';
+import RegisterClientScreen from './src/screens/RegisterCliente';
 
 // Using Firebase Auth.
 import * as firebase from 'firebase';
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyDeH2KF8_09jHamO-tuNxP_1FSYvrBCrfw",
@@ -30,7 +33,9 @@ const AppStack = createStackNavigator({
 
 const AuthStack =createStackNavigator({
   Login: LoginScreen,
-  Register: RegisterScreen
+  Register: RegisterScreen,
+  RegisterCommerce: RegisterCommerceScreen,
+  RegisterClient: RegisterClientScreen,
 });
 
 
