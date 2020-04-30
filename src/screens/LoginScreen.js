@@ -13,28 +13,25 @@ export default function LoginScreen({ navigation }) {
     const background = { uri: '/Users/roger/Documents/ROGER/PROYECTOREACT/NATIVE/solopide/src/assets/img/bl.png' }
 
 
-
-
     // handleLogin = () => {
 
+    //     axios.post(url+'login', {
+    //         email: 'roger.vazquezas@gmail.com',
+    //         password: 'Flintstone'
+    //       })
+    //       .then( (response) => {
+    //           console.log('Login...');
+    //           navigation.navigate('Home')   
+    //         if(Error != null){
+    //             setErrorMessage(null)
+    //         }
 
-    //     const user =  email;
-    //     const pass = password;
-    //     firebase.auth().signInWithEmailAndPassword(user, pass).catch(error => setErrorMessage(error.message))
+    //       })
+    //       .catch(function (error) {
+    //         const Error = error.response.data['error']
+    //         setErrorMessage(Error)
+    //       });
     // }
-
-    handleLogin = () => {
-        try {
-            axios.post(url + 'signup', { params: { email: email, password: password } })
-                .then(console.log('Todo se ejecuto sin problemas..'))
-                .catch(e => {
-                    console.log(e);
-                })
-        } catch(error){
-            console.log(error);
-            
-        }
-    }
 
 
     
@@ -73,7 +70,8 @@ export default function LoginScreen({ navigation }) {
 
                         < TouchableOpacity
                             style={styles.button}
-                            onPress={handleLogin}
+                            // onPress={handleLogin}
+                            onPress={ () => {navigation.navigate('Loading')} }
                         >
                             <Text style={{ color: "#fff", fontWeight: "500" }}> Iniciar Sesion </Text>
                         </TouchableOpacity>
@@ -130,7 +128,7 @@ export default function LoginScreen({ navigation }) {
         },
         button: {
             marginHorizontal: 30,
-            backgroundColor: "#E9446A",
+            backgroundColor: "#e03e36",
             borderRadius: 4,
             height: 52,
             alignItems: "center",

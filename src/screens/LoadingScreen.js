@@ -5,7 +5,8 @@ import * as firebase from 'firebase';
 export default function LoadingScreen( { navigation } ) {
 
     useEffect(() =>{
-        firebase.auth().onAuthStateChanged( user => { navigation.navigate( user ? "App": "Auth")})
+        //firebase.auth().onAuthStateChanged( user => { navigation.navigate( user ? "App": "Auth")})
+        setTimeout(() => {navigation.navigate('Home')}, 2000)
     }, []);
 
 

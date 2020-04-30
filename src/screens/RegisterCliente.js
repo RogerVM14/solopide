@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Text, View, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 import Global from '../../Global'
+import * as firebase from 'firebase';
+import axios from 'axios';
 
 
 export default function RegisterClient() {
@@ -12,11 +14,31 @@ export default function RegisterClient() {
     const [errorMessage, setErrorMessage] = useState(null);
 
 
-    handleCreateAccount = ({navigation}) => {
-        const user = email;
-        const pass = password;
-        firebase.auth().createUserWithEmailAndPassword(user, pass).catch(error => setErrorMessage(error.message));
+    // handleCreateAccount = ({navigation}) => {
+    //     const user = email;
+    //     const pass = password;
+    //     firebase.auth().createUserWithEmailAndPassword(user, pass).catch(error => setErrorMessage(error.message));
+    // }
+
+    
+    handleCreateAccount = () =>{
+        const email = email;
+        const password = password;
+        
+        axios.post(url+'/signup', {
+            email: 'roger.vazquezas@gmail.com',
+            password: 'Flintstone'
+          })
+          .then(function (response) {
+            setErrorMessage(null)            
+          })
+          .catch(function (error) {
+            const Error = error.response.data['error']
+            setErrorMessage(Error)
+          });
     }
+
+
 
     return (
         < View style={styles.container}>

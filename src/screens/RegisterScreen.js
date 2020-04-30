@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, ImageBackground, TouchableOpacity, TextInput, Platform } from 'react-native';
-import { Container, Header, Content, Button, Icon } from 'native-base';
 
-import * as firebase from 'firebase';
 
-import Global from '../../Global';
-import axios from 'axios';
+
 
 
 export default function RegisterScreen({ navigation }) {

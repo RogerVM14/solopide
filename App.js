@@ -1,14 +1,17 @@
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
+import SplashScreen from './src/screens/SplashScreen';
+import LoginScreen from './src/screens/LoginScreen';
 import HomeScreen from './src/screens/HomeScreen';
 import LoadingScreen from './src/screens/LoadingScreen';
-import RegisterScreen from './src/screens/RegisterScreen';
-import LoginScreen from './src/screens/LoginScreen';
-import RegisterCommerceScreen from './src/screens/RegisterCommerce';
-import RegisterClientScreen from './src/screens/RegisterCliente';
+// import RegisterScreen from './src/screens/RegisterScreen';
+// import RegisterCommerceScreen from './src/screens/RegisterCommerce';
+// import RegisterClientScreen from './src/screens/RegisterCliente';
+
 
 // Using Firebase Auth.
 import * as firebase from 'firebase';
+
 
 
 const firebaseConfig = {
@@ -33,9 +36,10 @@ const AppStack = createStackNavigator({
 
 const AuthStack =createStackNavigator({
   Login: LoginScreen,
-  Register: RegisterScreen,
-  RegisterCommerce: RegisterCommerceScreen,
-  RegisterClient: RegisterClientScreen,
+  Splash : SplashScreen
+  // Register: RegisterScreen,
+  // RegisterCommerce: RegisterCommerceScreen,
+  // RegisterClient: RegisterClientScreen,
 });
 
 
@@ -44,11 +48,13 @@ export default createAppContainer(
 
     {
       Loading: LoadingScreen,
+      Splash: SplashScreen,
       App: AppStack,
       Auth: AuthStack
     },
     {
-      initialRouteName: "Loading"
+      //initialRouteName: "Loading"
+      initialRouteName: "Splash"
     }
     
 
