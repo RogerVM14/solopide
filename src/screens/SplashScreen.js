@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { StyleSheet,View, Text, Animated, ImageBackground, Platform } from 'react-native';
 
 //import the firebase modules
-import * as firebase from 'firebase';
+// import * as firebase from 'firebase';
 
 export default function Splash ({navigation}){
 
@@ -13,7 +13,8 @@ export default function Splash ({navigation}){
 
     useEffect(() =>{
         setTimeout(() => {
-            firebase.auth().onAuthStateChanged( user => { navigation.navigate( user ? "App": "Auth")})
+            // firebase.auth().onAuthStateChanged( user => { navigation.navigate( user ? "App": "Auth")})
+            navigation.navigate('App')
         }, 5000)
         
     }, []);

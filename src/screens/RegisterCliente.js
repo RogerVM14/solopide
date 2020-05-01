@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Text, View, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 import Global from '../../Global'
-import * as firebase from 'firebase';
+// import * as firebase from 'firebase';
 import axios from 'axios';
 
 

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, ImageBackground, ScrollView, Image, ActivityIndicator } from 'react-native';
-import { Card, ListItem, Button, Icon } from 'react-native-elements'
-import * as firebase from 'firebase';
+
 import axios from 'axios';
 import Global from '../../Global'
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -112,7 +111,7 @@ export default function HomeScreen({ navigation }) {
 
         < View style={styles.container}>
             {/* Scroll View  */}
-            < ScrollView> 
+            < ScrollView>
                 <View style={styles.TitleCard}>
                     <Text style={styles.title}> Categorias </Text>
                 </View>
@@ -155,6 +154,7 @@ export default function HomeScreen({ navigation }) {
 
                 <View style={styles.restaurantList}>
                     < Text style={styles.headertitle}> Restaurantes </Text>
+ 
                     {
                         Restaurantes.map((rest, index) => {
                             let image = { uri: `${rest.image}` }
