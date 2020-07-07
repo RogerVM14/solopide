@@ -19,7 +19,7 @@
     "install": "^0.13.0",
     "jetifier": "^1.6.5",
     "native-base": "^2.13.12",
-    "npm": "^6.14.4",
+    "npm": "^6.14.6",
     "react": "16.11.0",
     "react-native": "0.62.2",
     "react-native-elements": "^1.2.7",
